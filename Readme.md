@@ -8,12 +8,12 @@ każdy serwis) wartości obliczone na podstawie zwróconych odpowiedzi.
 
 ## Główne funkcje systemu
 
-Pobieranie danych pogodowych z odpowiednich serwisów sieciowych 
+* Pobieranie danych pogodowych z odpowiednich serwisów sieciowych 
 (lub plików znajdujących się na Twoim dysku)
-Pobrane dane powinny być zapisywane do bazy danych
-Aplikacja powinna przyjmować datę i lokalizację miasta w celu 
+* Pobrane dane powinny być zapisywane do bazy danych
+* Aplikacja powinna przyjmować datę i lokalizację miasta w celu 
 pobierania uśrednionych wartości
-Wyniki uśredniania powinny być zapisywane w bazie danych
+* Wyniki uśredniania powinny być zapisywane w bazie danych
 
 ## Stos techologiczny
 * JDK 17
