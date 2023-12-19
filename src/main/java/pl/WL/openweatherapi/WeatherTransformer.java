@@ -2,7 +2,7 @@ package pl.WL.openweatherapi;
 
 import pl.WL.Weather;
 
- class WeatherTransformer {
+class WeatherTransformer {
      static Weather toWeather(OpenWeather openWeather) {
         Weather weather = new Weather();
         weather.setCityName(openWeather.getName());

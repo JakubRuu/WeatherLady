@@ -2,7 +2,7 @@ package pl.WL.openweatherapi;
 
 import com.google.gson.annotations.SerializedName;
 
-class OpenWeather {
+ class OpenWeather {
     private String name;
     @SerializedName("main")
     private WeatherDetails weatherDetails;

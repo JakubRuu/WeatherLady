@@ -2,6 +2,7 @@ package pl.WL.openweatherapi;
 
 import pl.WL.NetworkApiException;
 import pl.WL.Weather;
+import pl.WL.openweatherapi.OpenWeather;
 
 import java.util.Optional;
 
