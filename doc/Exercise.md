@@ -4,8 +4,8 @@
 * apId 21905c30f7909d26e1c5f9d535320b6c
 * http://api.weatherstack.com/current?access_key=21905c30f7909d26e1c5f9d535320b6c&query=Warszawa
 
-* apId WXJBX226VSEAPY9LWJW7R7Z3G
-* https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Bialystok?unitGroup=metric&key=WXJBX226VSEAPY9LWJW7R7Z3G&contentType=json
+* apId 322b0368f4f24611b56140406231912
+* http://api.weatherapi.com/v1/current.json?key=322b0368f4f24611b56140406231912&q=bialystok&aqi=no
 
 
 Pobierz następujące wartości pogodowe:

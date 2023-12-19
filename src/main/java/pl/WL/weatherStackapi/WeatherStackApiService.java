@@ -15,6 +15,14 @@ public class WeatherStackApiService {
             return Optional.empty();
         }
     }
+    public Optional<Weather> fetchByCoordinates(float lat,float lon) {
 
+        try {
+            WeatherStack weatherStack = new FetchWeatherByCoordinates (lat,lon).execute();
+            return Optional.of(WeatherTransformer.toWeather(weatherStack));
+        } catch (NetworkApiException e) {
+            return Optional.empty();
+        }
+    }
 
 }

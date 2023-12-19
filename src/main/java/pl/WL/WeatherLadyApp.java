@@ -10,7 +10,9 @@ public class WeatherLadyApp {
     public static void main(String[] args) {
         WeatherLadyService weatherLadyService = new WeatherLadyService();
         Weather weather = weatherLadyService.fetchWeatherByCityName("Warszawa");
+        Weather weather1 = weatherLadyService.fetchWeatherByCoordinates(35.0f,135.0f);
         System.out.println("Średnia: "+weather);
+        System.out.println("Średnia: "+weather1);
 
     }
 }

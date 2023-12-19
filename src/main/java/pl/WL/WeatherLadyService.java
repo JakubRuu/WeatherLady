@@ -33,6 +33,29 @@ public class WeatherLadyService {
         weather.setWindDeg((int)getAverageWindDeg(weathers));
         return weather;
     }
+    public Weather fetchWeatherByCoordinates(float lat, float lon){
+        OpenWeatherApiService openWeatherApiService = new OpenWeatherApiService();
+        WeatherStackApiService weatherStackApiService = new WeatherStackApiService();
+        VisualWeatherApiService visualWeatherApiService=new VisualWeatherApiService();
+        List<Optional<Weather>> weatherOptionals= new ArrayList<>();
+        weatherOptionals.add(openWeatherApiService.fetchByCoordinates(lat, lon));
+        weatherOptionals.add(weatherStackApiService.fetchByCoordinates(lat, lon));
+        //weatherOptionals.add(visualWeatherApiService.fetchByCoordinates(lat, lon));
+
+        List<Weather> weathers=weatherOptionals.stream()
+                .filter(w-> w.isPresent())
+                .map(w-> w.get())
+                .collect(Collectors.toList());
+        System.out.println(weathers);
+        Weather weather=new Weather();
+        weather.setCityName(weathers.stream().findFirst().map( w-> w.getCityName()).orElse("unknown"));
+        weather.setTemp(getAverageTemperature(weathers));
+        weather.setPressure(getAveragePressure(weathers));
+        weather.setHumidity((int)getAverageHumidity(weathers));
+        weather.setWindSpeed(getAverageWindSpeedy(weathers));
+        weather.setWindDeg((int)getAverageWindDeg(weathers));
+        return weather;
+    }
     private float getAverageTemperature(List<Weather>weathers){
         return (float) weathers.stream().mapToDouble(w-> w.getTemp()).average().orElse(0.0f);
     }
