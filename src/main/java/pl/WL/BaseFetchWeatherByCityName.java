@@ -7,7 +7,7 @@ public abstract class BaseFetchWeatherByCityName<T> {
         this.cityName = cityName;
     }
     public final T execute() {
-       return httpClientWrapper.get(getUrl(),getClasz());
+       return HttpClientWrapperProvider.geInstance().get(getUrl(),getClasz());
     }
     public abstract String getUrl();
     public abstract Class<T> getClasz();

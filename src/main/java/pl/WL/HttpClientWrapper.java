@@ -10,9 +10,11 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class HttpClientWrapper {
+
+    private final Gson gson = new Gson();
+    private final HttpClient httpClient = HttpClient.newHttpClient();
+
     public final <T> T get(String url, Class<T> clasz) {
-        Gson gson = new Gson();
-        HttpClient httpClient = HttpClient.newHttpClient();
         try {
             HttpRequest httpRequest = HttpRequest.newBuilder()
                     .uri(new URI(url))

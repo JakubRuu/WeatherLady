@@ -11,7 +11,7 @@ public abstract class BaseFetchWeatherByCoordianates<T>{
         this.lon = lon;
     }
     public final T execute(){
-        return httpClientWrapper.get(getUrl(), getClasz());
+        return HttpClientWrapperProvider.geInstance().get(getUrl(), getClasz());
     }
     public abstract String getUrl();
     public abstract Class<T> getClasz();
