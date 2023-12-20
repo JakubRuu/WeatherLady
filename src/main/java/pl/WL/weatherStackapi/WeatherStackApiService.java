@@ -16,7 +16,6 @@ public class WeatherStackApiService {
         }
     }
     public Optional<Weather> fetchByCoordinates(float lat,float lon) {
-
         try {
             WeatherStack weatherStack = new FetchWeatherByCoordinates (lat,lon).execute();
             return Optional.of(WeatherTransformer.toWeather(weatherStack));

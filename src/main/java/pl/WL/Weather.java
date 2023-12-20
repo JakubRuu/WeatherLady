@@ -7,30 +7,24 @@ public class Weather {
     private float windSpeed;
     private int windDeg;
 
-    public Weather(String cityName, float temp, float pressure, int humidity, float windSpeed, int wimdDeg) {
+    public Weather(String cityName, float temp, float pressure, int humidity, float windSpeed, int windDeg) {
         this.cityName = cityName;
         this.temp = temp;
         this.pressure = pressure;
         this.humidity = humidity;
         this.windSpeed = windSpeed;
-        this.windDeg = wimdDeg;
+        this.windDeg = windDeg;
 
-    }
-
-    public Weather(float windSpeed, int wimdDeg) {
-
-        this.windSpeed = windSpeed;
-        this.windDeg = wimdDeg;
     }
 
     public Weather() {
 
     }
 
-    public Weather(String cityName, float windSpeed, int wimdDeg) {
+    public Weather(String cityName, float windSpeed, int windDeg) {
         this.cityName = cityName;
         this.windSpeed = windSpeed;
-        this.windDeg = wimdDeg;
+        this.windDeg = windDeg;
     }
 
     public String getCityName() {

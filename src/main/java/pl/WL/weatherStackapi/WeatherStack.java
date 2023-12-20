@@ -8,10 +8,6 @@ class WeatherStack {
     @SerializedName("current")
     private WeatherDetails weatherDetails;
 
-    WeatherStack(Location location) {
-        this.location = location;
-    }
-
     WeatherStack(Location location, WeatherDetails weatherDetails) {
         this.location = location;
         this.weatherDetails = weatherDetails;
@@ -87,11 +83,6 @@ class WeatherDetails {
     }
 
     WeatherDetails() {
-
-    }
-
-    WeatherDetails(float temperature) {
-        this.temperature = temperature;
     }
 
     float getTemperature() {

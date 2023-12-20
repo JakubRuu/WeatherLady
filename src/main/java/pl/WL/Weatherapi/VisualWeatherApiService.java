@@ -9,10 +9,22 @@ public class VisualWeatherApiService {
     public Optional<Weather> fetchByCityName(String cityName) {
 
         try {
-            WeatherVisual weatherStack = new FetchWeatherByCityName(cityName).execute();
-            return Optional.of(WeatherTransformer.toWeather(weatherStack));
+            WeatherVisual weatherVisual = new FetchWeatherByCityName(cityName).execute();
+            return Optional.of(WeatherTransformer.toWeather(weatherVisual));
         } catch (NetworkApiException e) {
             return Optional.empty();
         }
     }
+    public Optional<Weather> fetchByCoordinates(float lat, float lon) {
+
+        try {
+            WeatherVisual weatherVisual = new FetchWeatherByCoordianates(lat,lon).execute();
+            return Optional.of(WeatherTransformer.toWeather(weatherVisual));
+        } catch (NetworkApiException e) {
+            return Optional.empty();
+        }
+    }
+
+
+
 }

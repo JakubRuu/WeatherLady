@@ -9,7 +9,7 @@ public FetchWeatherByCoordinates(float lat, float lon){
 }
     @Override
     public String getUrl() {
-        return Config.getInstance().getFetchByCordinatesQuery(lat,lon);
+        return Config.getInstance().getFetchByCoordinatesQuery(lat,lon);
     }
 
     @Override
