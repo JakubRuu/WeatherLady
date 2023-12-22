@@ -2,11 +2,13 @@ package pl.WL.openweatherapi;
 
 import pl.WL.NetworkApiException;
 import pl.WL.Weather;
+import pl.WL.WeatherApiService;
 
 import java.util.Optional;
 
 
-public class OpenWeatherApiService {
+public class OpenWeatherApiService implements WeatherApiService {
+    @Override
     public Optional<Weather> fetchByCityName(String cityName) {
 
         try {
@@ -17,6 +19,7 @@ public class OpenWeatherApiService {
         }
     }
 
+    @Override
     public Optional<Weather> fetchByCoordinates(float lat, float lon) {
 
         try {

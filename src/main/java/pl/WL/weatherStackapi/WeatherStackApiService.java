@@ -2,10 +2,12 @@ package pl.WL.weatherStackapi;
 
 import pl.WL.NetworkApiException;
 import pl.WL.Weather;
+import pl.WL.WeatherApiService;
 
 import java.util.Optional;
 
-public class WeatherStackApiService {
+public class WeatherStackApiService implements WeatherApiService {
+    @Override
     public Optional<Weather> fetchByCityName(String cityName) {
 
         try {
@@ -16,6 +18,7 @@ public class WeatherStackApiService {
         }
     }
 
+    @Override
     public Optional<Weather> fetchByCoordinates(float lat, float lon) {
         try {
             WeatherStack weatherStack = new FetchWeatherByCoordinates(lat, lon).execute();

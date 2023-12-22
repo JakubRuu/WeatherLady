@@ -1,32 +1,25 @@
 package pl.WL;
 
-import pl.WL.Weatherapi.VisualWeatherApiService;
-import pl.WL.openweatherapi.OpenWeatherApiService;
-import pl.WL.weatherStackapi.WeatherStackApiService;
-
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class WeatherLadyService {
     private final WeatherLadyRepository weatherLadyRepository;
+    private final List<WeatherApiService> weatherApiServices;
 
-    public WeatherLadyService(WeatherLadyRepository weatherLadyRepository) {
+    public WeatherLadyService(List<WeatherApiService> weatherApiService, WeatherLadyRepository weatherLadyRepository) {
         this.weatherLadyRepository = weatherLadyRepository;
+        this.weatherApiServices = weatherApiService;
     }
 
     public Weather fetchWeatherByCityName(String cityName) {
 
-        OpenWeatherApiService openWeatherApiService = new OpenWeatherApiService();
-        WeatherStackApiService weatherStackApiService = new WeatherStackApiService();
-        VisualWeatherApiService visualWeatherApiService = new VisualWeatherApiService();
-        List<Optional<Weather>> weatherOptionals = new ArrayList<>();
-        weatherOptionals.add(openWeatherApiService.fetchByCityName(cityName));
-        weatherOptionals.add(weatherStackApiService.fetchByCityName(cityName));
-        weatherOptionals.add(visualWeatherApiService.fetchByCityName(cityName));
+        List<Optional<Weather>> weatherOptionals = weatherApiServices.stream()
+                .map(weatherApiService -> weatherApiService.fetchByCityName(cityName))
+                .collect(Collectors.toList());
 
         List<Weather> weathers = weatherOptionals.stream()
                 .filter(Optional::isPresent)
@@ -46,13 +39,10 @@ public class WeatherLadyService {
     }
 
     public Weather fetchWeatherByCoordinates(float lat, float lon) {
-        OpenWeatherApiService openWeatherApiService = new OpenWeatherApiService();
-        WeatherStackApiService weatherStackApiService = new WeatherStackApiService();
-        VisualWeatherApiService visualWeatherApiService = new VisualWeatherApiService();
-        List<Optional<Weather>> weatherOptionals = new ArrayList<>();
-        weatherOptionals.add(openWeatherApiService.fetchByCoordinates(lat, lon));
-        weatherOptionals.add(weatherStackApiService.fetchByCoordinates(lat, lon));
-        weatherOptionals.add(visualWeatherApiService.fetchByCoordinates(lat, lon));
+        List<Optional<Weather>> weatherOptionals = weatherApiServices.stream()
+                .map(weatherApiService -> weatherApiService.fetchByCoordinates(lat, lon))
+                .collect(Collectors.toList());
+
         List<Weather> weathers = weatherOptionals.stream()
                 .filter(w -> w.isPresent())
                 .map(w -> w.get())
