@@ -15,16 +15,16 @@ public class VisualWeatherApiService {
             return Optional.empty();
         }
     }
+
     public Optional<Weather> fetchByCoordinates(float lat, float lon) {
 
         try {
-            WeatherVisual weatherVisual = new FetchWeatherByCoordianates(lat,lon).execute();
+            WeatherVisual weatherVisual = new FetchWeatherByCoordianates(lat, lon).execute();
             return Optional.of(WeatherTransformer.toWeather(weatherVisual));
         } catch (NetworkApiException e) {
             return Optional.empty();
         }
     }
-
 
 
 }

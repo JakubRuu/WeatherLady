@@ -6,6 +6,7 @@ public class FetchWeatherByCityName extends BaseFetchWeatherByCityName<WeatherVi
     public FetchWeatherByCityName(String cityName) {
         super(cityName);
     }
+
     @Override
     public String getUrl() {
         return Config.getInstance().getFetchCityNameQuery(cityName);

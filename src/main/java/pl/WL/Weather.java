@@ -1,30 +1,55 @@
 package pl.WL;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+import java.time.LocalDateTime;
+
+@Entity
 public class Weather {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
     private String cityName;
-    private float temp, pressure;
+    private float temp;
+    private float pressure;
     private int humidity;
     private float windSpeed;
     private int windDeg;
+    private LocalDateTime dataTime;
 
-    public Weather(String cityName, float temp, float pressure, int humidity, float windSpeed, int windDeg) {
+
+    public Weather(int id, String cityName, float temp, float pressure, int humidity, float windSpeed, int windDeg, LocalDateTime dataTime) {
+        this.id = id;
         this.cityName = cityName;
         this.temp = temp;
         this.pressure = pressure;
         this.humidity = humidity;
         this.windSpeed = windSpeed;
         this.windDeg = windDeg;
-
+        this.dataTime = dataTime;
     }
 
     public Weather() {
 
     }
 
-    public Weather(String cityName, float windSpeed, int windDeg) {
-        this.cityName = cityName;
-        this.windSpeed = windSpeed;
-        this.windDeg = windDeg;
+    int getId() {
+        return id;
+    }
+
+    void setId(int id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDataTime() {
+        return dataTime;
+    }
+
+    public void setDataTime(LocalDateTime dataTime) {
+        this.dataTime = dataTime;
     }
 
     public String getCityName() {
@@ -78,12 +103,14 @@ public class Weather {
     @Override
     public String toString() {
         return "Weather{" +
-                "cityName='" + cityName + '\'' +
+                "id=" + id +
+                ", cityName='" + cityName + '\'' +
                 ", temp=" + temp +
                 ", pressure=" + pressure +
                 ", humidity=" + humidity +
                 ", windSpeed=" + windSpeed +
                 ", windDeg=" + windDeg +
+                ", dataTime=" + dataTime +
                 '}';
     }
 }

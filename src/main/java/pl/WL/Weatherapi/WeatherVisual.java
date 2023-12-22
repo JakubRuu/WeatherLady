@@ -13,6 +13,10 @@ class WeatherVisual {
         this.weatherDetails = weatherDetails;
     }
 
+    public WeatherVisual(WeatherDetails weatherDetails) {
+        this.weatherDetails = weatherDetails;
+    }
+
     public Location getLocation() {
         return location;
     }
@@ -20,11 +24,6 @@ class WeatherVisual {
     public void setLocation(Location location) {
         this.location = location;
     }
-
-    public WeatherVisual(WeatherDetails weatherDetails) {
-        this.weatherDetails = weatherDetails;
-    }
-
 
     WeatherDetails getWeatherDetails() {
         return weatherDetails;
@@ -44,6 +43,7 @@ class WeatherVisual {
 
 class Location {
     private String name;
+
 
     Location() {
     }
@@ -69,7 +69,7 @@ class Location {
 }
 
 class WeatherDetails {
-@SerializedName("temp_c")
+    @SerializedName("temp_c")
     private float temp;
     private int humidity;
     @SerializedName("pressure_mb")
@@ -78,24 +78,37 @@ class WeatherDetails {
     private float windSpeed;
     @SerializedName("wind_degree")
     private float windDegree;
+    @SerializedName("last_updated_epoch")
+    private long dateTime;
 
-    public WeatherDetails(float temp, int humidity, float pressure, float windSpeed, float windDegree) {
+
+    public WeatherDetails(float temp, int humidity, float pressure, float windSpeed, float windDegree, long dateTime) {
         this.temp = temp;
         this.humidity = humidity;
         this.pressure = pressure;
         this.windSpeed = windSpeed;
         this.windDegree = windDegree;
+        this.dateTime = dateTime;
     }
 
     @Override
     public String toString() {
         return "WeatherDetails{" +
-                ", temp=" + temp +
+                "temp=" + temp +
                 ", humidity=" + humidity +
                 ", pressure=" + pressure +
                 ", windSpeed=" + windSpeed +
                 ", windDegree=" + windDegree +
+                ", dateTime=" + dateTime +
                 '}';
+    }
+
+    public long getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(long dateTime) {
+        this.dateTime = dateTime;
     }
 
     float getTemp() {

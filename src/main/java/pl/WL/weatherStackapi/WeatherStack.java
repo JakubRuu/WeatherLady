@@ -40,12 +40,16 @@ class WeatherStack {
 
 class Location {
     private String name;
+    @SerializedName("localtime_epoch")
+    private long dateTime;
+
 
     Location() {
     }
 
-    public Location(String name) {
+    public Location(String name, long dateTime) {
         this.name = name;
+        this.dateTime = dateTime;
     }
 
     String getName() {
@@ -56,10 +60,19 @@ class Location {
         this.name = name;
     }
 
+    long getDateTime() {
+        return dateTime;
+    }
+
+    void setDateTime(long dateTime) {
+        this.dateTime = dateTime;
+    }
+
     @Override
     public String toString() {
         return "Location{" +
                 "name='" + name + '\'' +
+                ", dateTime=" + dateTime +
                 '}';
     }
 }

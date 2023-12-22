@@ -3,7 +3,6 @@ package pl.WL.openweatherapi;
 import pl.WL.NetworkApiException;
 import pl.WL.Weather;
 
-
 import java.util.Optional;
 
 
@@ -17,6 +16,7 @@ public class OpenWeatherApiService {
             return Optional.empty();
         }
     }
+
     public Optional<Weather> fetchByCoordinates(float lat, float lon) {
 
         try {

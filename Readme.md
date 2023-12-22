@@ -19,5 +19,6 @@ pobierania uśrednionych wartości
 * JDK 17
 * GSON 2.10.1
 * Hibernate 6.4.1.Final
+* H2 2.2.224
 * JUnit5 5.10.1
 
